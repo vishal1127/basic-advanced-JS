@@ -40,7 +40,13 @@ function onSubmit(e){
             name: nameInput.value,
             email: emailInput.value
         }
+        let li = document.createElement('li')
+        li.classList='item'
+        li.appendChild(document.createTextNode(nameInput.value+' '))
+        list.appendChild(li)
+        li.appendChild(document.createTextNode(emailInput.value))
+        list.appendChild(li)
         let userObj = JSON.stringify(userDetails)
-        localStorage.setItem('user details', userObj)
+        localStorage.setItem(`user details of ${nameInput.value}`, userObj)
     }
 }
