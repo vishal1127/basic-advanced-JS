@@ -35,5 +35,6 @@ function onSubmit(e){
     }
     else{
         console.log(`${nameInput.value} : ${emailInput.value}`)
+        localStorage.setItem(nameInput.value, emailInput.value)
     }
 }
