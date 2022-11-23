@@ -23,6 +23,12 @@ function addItem(e){
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem));
 
+  var desc = document.createElement('span')
+  var descText = document.getElementById('desc').value
+  var brTag= document.createElement('br')
+  desc.appendChild(document.createTextNode(descText))
+  li.appendChild(brTag)
+  li.appendChild(desc)
   // Create del button element
   var deleteBtn = document.createElement('button');
 
@@ -58,7 +64,9 @@ function filterItems(e){
   // Convert to an array
   Array.from(items).forEach(function(item){
     var itemName = item.firstChild.textContent;
-    if(itemName.toLowerCase().indexOf(text) != -1){
+    // console.log(item)
+    var descTxt = item.children[1].textContent;
+    if(itemName.toLowerCase().indexOf(text) != -1 || descTxt.toLowerCase().indexOf(text) != -1){
       item.style.display = 'block';
     } else {
       item.style.display = 'none';
