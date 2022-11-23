@@ -35,6 +35,12 @@ function onSubmit(e){
     }
     else{
         console.log(`${nameInput.value} : ${emailInput.value}`)
-        localStorage.setItem(nameInput.value, emailInput.value)
+        // localStorage.setItem(nameInput.value, emailInput.value)
+        let userDetails= {
+            name: nameInput.value,
+            email: emailInput.value
+        }
+        let userObj = JSON.stringify(userDetails)
+        localStorage.setItem('user details', userObj)
     }
 }
