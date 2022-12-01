@@ -7,36 +7,58 @@
 </head>
 <body>
     <script>
-  class Student{
-  static number=0;
-  constructor(n,a,p,m){
-    this.name=n
-    this.age=a
-    this.phone=p
-    this.marks=m
-    Student.number++
-  }
-  eligible(){
-    return (age) => {
-    if(this.age>=age)
-      console.log(`${this.name} is eligible`)
-    else
-      console.log(`${this.name} is not eligible`)
-  } 
-  }
+      setTimeout(() => console.log('timer1 expired'), 1000)
+
+
+setTimeout(() => console.log('timer2 expired'), 0)
+
+
+function x(y) {
+
+console.log('inside x');
+
+y();
+
 }
 
-var harry= new Student('Harry', 20, '983293423', 68)
-var aman= new Student('Aman', 22, '983293423', 38)
-var anil= new Student('Anil', 19, '983293423', 42)
-var parag= new Student('Parag', 25, '983293423', 78)
-var karan= new Student('Karan', 27, '983293423', 72)
 
-harry.eligible()(20)
-aman.eligible()(20)
-anil.eligible()(20)
-parag.eligible()(20)
-karan.eligible()(20)
+x(function y(){
+
+setTimeout(() => {
+  console.log('inside y')
+}, 0)
+
+})
+//   class Student{
+//   static number=0;
+//   constructor(n,a,p,m){
+//     this.name=n
+//     this.age=a
+//     this.phone=p
+//     this.marks=m
+//     Student.number++
+//   }
+//   eligible(){
+//     return (age) => {
+//     if(this.age>=age)
+//       console.log(`${this.name} is eligible`)
+//     else
+//       console.log(`${this.name} is not eligible`)
+//   } 
+//   }
+// }
+
+// var harry= new Student('Harry', 20, '983293423', 68)
+// var aman= new Student('Aman', 22, '983293423', 38)
+// var anil= new Student('Anil', 19, '983293423', 42)
+// var parag= new Student('Parag', 25, '983293423', 78)
+// var karan= new Student('Karan', 27, '983293423', 72)
+
+// harry.eligible()(20)
+// aman.eligible()(20)
+// anil.eligible()(20)
+// parag.eligible()(20)
+// karan.eligible()(20)
 // console.log(Student.number)
 //         let obj={
 //             a:5,
