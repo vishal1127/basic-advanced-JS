@@ -55,23 +55,6 @@ function create4thPost(post, callback) {
 // );
 create4thPost({ title: 'Post Four', body: 'This is post four' }, getPosts);
 
-//using promise
-// function createPost(post) {
-// 	return new Promise((resolve, reject) => {
-// 		setTimeout(() => {
-// 			posts.push(post);
-// 			let error = false;
-
-// 			if (!error) resolve();
-// 			else reject('Error: something went wrong');
-// 		}, 1000);
-// 	});
-// }
-
-// createPost({ title: 'Post Three', body: 'This is post three' })
-// 	.then(getPosts)
-// 	.catch((err) => console.log(err));
-
 var timer = 0;
 var count = 0;
 function lastEditedInSecondsAgo() {
