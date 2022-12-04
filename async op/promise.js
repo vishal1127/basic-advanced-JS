@@ -26,30 +26,30 @@ function getPosts() {
 	}, 1000);
 }
 // USING PROMISE
-function createPost(post) {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			posts.push(post);
-		}, 1000);
-		let error = false;
-		if (!error) resolve(posts);
-		else reject('Error: something went wrong');
-	});
-}
-function deletePost() {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			let len = posts.length;
-			// console.log('------>', posts.length);
-			posts.splice(len - 1, len);
-			// console.log('posts after slice', posts);
-			let error = posts.length;
-			if (error) {
-				resolve();
-			} else reject('Error: All user posts deleted');
-		}, 1000);
-	});
-}
+// function createPost(post) {
+// 	return new Promise((resolve, reject) => {
+// 		setTimeout(() => {
+// 			posts.push(post);
+// 		}, 1000);
+// 		let error = false;
+// 		if (!error) resolve(posts);
+// 		else reject('Error: something went wrong');
+// 	});
+// }
+// function deletePost() {
+// 	return new Promise((resolve, reject) => {
+// 		setTimeout(() => {
+// 			let len = posts.length;
+// 			// console.log('------>', posts.length);
+// 			posts.splice(len - 1, len);
+// 			// console.log('posts after slice', posts);
+// 			let error = posts.length;
+// 			if (error) {
+// 				resolve();
+// 			} else reject('Error: All user posts deleted');
+// 		}, 1000);
+// 	});
+// }
 
 // createPost({
 // 	title: 'Post Three',
@@ -77,39 +77,71 @@ function deletePost() {
 // }, 5000);
 
 //USING PROMISE ALL
-function updateLastUserActivityTime() {
-	// setTimeout(() => {
-	return new Promise((resolve, reject) => {
-		let error = false;
-		let date = new Date();
-		if (!error) resolve(date);
-		else reject('error');
-	});
-	// }, 1000);
-}
+// function updateLastUserActivityTime() {
+// setTimeout(() => {
+// return new Promise((resolve, reject) => {
+// 	let error = false;
+// 	let date = new Date();
+// 	if (!error) resolve(date);
+// 	else reject('error');
+// });
+// }, 1000);
+// }
 // let newPost = createPost({
 // 	title: 'Post Four',
 // 	body: 'This is post four',
 // }).then(posts);
-// updateLastUserActivityTime().then((res) => {
-// 	console.log('---;;;;;', res);
-// });
-function logPosts() {
-	console.log('Updated posts list:', posts);
-}
-Promise.all([
-	createPost({
-		title: 'Post Three',
+// function logPosts() {
+// 	console.log('Updated posts list:', posts);
+// }
+// Promise.all([
+// 	createPost({
+// 		title: 'Post Three',
+// 		body: 'This is post three',
+// 	}),
+// 	updateLastUserActivityTime(),
+// ])
+// 	.then((values) => {
+// 		console.log(values);
+// 	})
+// 	.then(() => {
+// 		setTimeout(() => {
+// 			deletePost();
+// 		}, 2000);
+// 	})
+// 	.then(logPosts);
+
+//USING ASYNC AWAIT
+let postsCD = async () => {
+	function createPost(post) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				posts.push(post);
+			}, 1000);
+			let error = false;
+			if (!error) resolve(posts);
+			else reject('Error: something went wrong');
+		});
+	}
+
+	function deletePost() {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				let len = posts.length;
+				posts.splice(len - 1, len);
+				let error = posts.length;
+				if (error) {
+					resolve();
+				} else reject('Error: All user posts deleted');
+			}, 1000);
+		});
+	}
+
+	let postC = await createPost({
+		title: 'Post three',
 		body: 'This is post three',
-	}),
-	updateLastUserActivityTime(),
-])
-	.then((values) => {
-		console.log(values);
-	})
-	.then(() => {
-		setTimeout(() => {
-			deletePost();
-		}, 2000);
-	})
-	.then(logPosts);
+	});
+	let postD = await deletePost();
+	return postC;
+};
+postsCD().then((posts) => console.log(posts));
