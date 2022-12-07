@@ -6,7 +6,7 @@ const userList = document.querySelector('#users');
 const list = document.querySelector('.items');
 const submitBtn = document.querySelector('.btn');
 let listData = document.getElementsByTagName('li');
-
+let allData;
 // list.firstElementChild.textContent='Hello'
 list.firstElementChild.style.background = 'green';
 list.children[1].style.background = 'yellow';
@@ -146,7 +146,8 @@ function showUsers() {
 		)
 		.then((res) => {
 			console.log(res);
-			Array.from(res.data).forEach((item) => {
+			allData = res.data;
+			Array.from(allData).forEach((item) => {
 				console.log('item', item.name);
 				let li = document.createElement('li');
 				li.classList = 'item';
@@ -176,11 +177,27 @@ function editItem(e) {
 	}
 }
 function removeItem(e) {
-	// console.log('delete clicked')
+	console.log(
+		'delete clicked',
+		e.target.parentElement.childNodes[1].textContent
+	);
+	let emailId = e.target.parentElement.childNodes[1].textContent;
+	let deleteId;
+	allData.forEach((item) => {
+		console.log('-------->', item);
+		if (emailId == item.email) deleteId = item._id;
+	});
 	if (e.target.classList.contains('delete')) {
 		if (confirm('Are You Sure?')) {
-			var li = e.target.parentElement;
-			list.removeChild(li);
+			axios
+				.delete(
+					`https://crudcrud.com/api/fb24a18a988e461ea9651a842e064a33/appointmentData/${deleteId}`
+				)
+				.then(() => {
+					var li = e.target.parentElement;
+					list.removeChild(li);
+				})
+				.catch((err) => console.log(`Error on delete:${err}`));
 		}
 	}
 }
