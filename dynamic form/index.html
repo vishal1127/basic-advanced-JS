@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Expense Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,22 +12,34 @@
     <div class="container mt-5">
         <form>
         <div class="mb-3">
-            <label for="expenseInput" class="form-label">Expense amount</label>
-            <input type="text" class="form" id="expenseInput" placeholder="100">
-            <label for="descInput" class="form-label">Description</label>
-            <input type="text" class="form" id="descInput" placeholder="Movie">
-            <label for="catInput" class="form-label">Select category</label>
-            <select class="form" id="catInput" aria-label="Default select example">
-                <option value="Fuel">Fuel</option>
-                <option value="Ticket">Ticket</option>
-                <option value="Food">Food</option>
-              </select>
-              <button type="submit" id="addBtn" class="btn btn-primary btn-sm">Add expense</button>
+            <div class="row">
+                <div class="col md-3">
+                    <label for="expenseInput" class="form-label">Expense amount</label>
+                    <input type="text" class="form" id="expenseInput" placeholder="100">
+                </div>
+                <div class="col md-3">
+                    <label for="descInput" class="form-label">Description</label>
+                    <input type="text" class="form" id="descInput" placeholder="Movie">
+                </div>
+                <div class="col md-3">
+                    <label for="catInput" class="form-label">Select category</label>
+                    <br>
+                    <select class="form" id="catInput" aria-label="Default select example">
+                        <option value="Fuel">Fuel</option>
+                        <option value="Ticket">Ticket</option>
+                        <option value="Food">Food</option>
+                      </select>
+                </div>
+                <div class="col md-3" style="margin-top: auto;">
+                    <button type="submit" id="addBtn" class="btn btn-primary btn-sm">Add expense</button>
+                </div>
+            </div>
     </div>
 </form>
 <ul class="expList">
 </ul>
     <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </body>
 </html>
