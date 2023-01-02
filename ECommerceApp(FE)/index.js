@@ -26,10 +26,10 @@ parentContainer.addEventListener("click", (e) => {
         <img class='cart-img' src="${img_src}" alt="">
             <span>${name}</span>
     </span>
-    <span class='cart-price cart-column'>${price}</span>
     <span class='cart-quantity cart-column'>
         <input type="text" value="1">
-        <button>REMOVE</button>
+    <span class='cart-price cart-column remove-item'>${price}</span>
+        <button>X</button>
     </span>`;
     cart_items.appendChild(cart_item);
 
@@ -49,7 +49,7 @@ parentContainer.addEventListener("click", (e) => {
   ) {
     document.querySelector("#cart").style = "display:block;";
   }
-  if (e.target.className == "cancel") {
+  if (e.target.className == "cancel" || e.target.className == "cshopping-btn") {
     document.querySelector("#cart").style = "display:none;";
   }
   if (e.target.className == "purchase-btn") {
@@ -63,7 +63,7 @@ parentContainer.addEventListener("click", (e) => {
     document.querySelector("#total-value").innerText = `0`;
   }
 
-  if (e.target.innerText == "REMOVE") {
+  if (e.target.innerText == "X") {
     let total_cart_price = document.querySelector("#total-value").innerText;
     total_cart_price =
       parseFloat(total_cart_price).toFixed(2) -
