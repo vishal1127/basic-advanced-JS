@@ -26,13 +26,11 @@ async function submitBtn(e) {
     category: category.value,
   };
   if (editID == false) {
-    console.log("insiedeeeeee if");
     try {
       const res = await axios.post("http://localhost:3000/addExpense", expense);
-      console.log("ress------>>", res);
-      setTimeout(() => {
-        getAllData();
-      }, 100);
+      //   setTimeout(() => {
+      getAllData();
+      //   }, 100);
       //   listExpense(res.data);
     } catch (error) {
       console.log("Error during post", error);
