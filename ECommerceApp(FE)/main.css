@@ -19,6 +19,7 @@ header {
 
 #cart {
   position: fixed;
+  overflow: scroll;
   height: 95%;
 }
 header h1 {
@@ -197,7 +198,7 @@ section h2 {
   width: 45%;
 }
 .cart-img {
-  width: 80px;
+  width: 50px;
   border-radius: 8%;
   margin-right: 20px;
 }
@@ -210,10 +211,13 @@ section h2 {
 .cart-column {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   margin-right: 1.5em;
   padding-bottom: 10px;
   margin-top: 10px;
+}
+.remove-item {
+  float: right;
 }
 .cart-quantity input {
   width: 40px;
@@ -248,23 +252,45 @@ section h2 {
   margin-right: 10px;
   font-size: 1.5rem;
 }
-
-.purchase-btn {
+.cart-btns {
   display: flex;
+}
+.purchase-btn {
+  /* display: flex; */
   align-items: center;
   justify-content: center;
-  margin: auto;
-  margin-top: 50px;
-  background: #56ccf2;
+  /* margin: auto; */
+  /* margin-top: 50px; */
+  height: 40px;
+  background: #000000;
   color: white;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: bold;
   border: none;
-  border-radius: 8%;
   padding: 12px;
   cursor: pointer;
+  width: 49%;
 }
 .purchase-btn:hover {
+  background-color: #18acdd;
+}
+.cshopping-btn {
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* margin: auto; */
+  /* margin-top: 50px; */
+  height: 40px;
+  background: #000000;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: none;
+  /* padding: 12px; */
+  cursor: pointer;
+  width: 49%;
+}
+.cshopping-btn:hover {
   background-color: #18acdd;
 }
 footer {
@@ -432,11 +458,11 @@ header ul a {
   color: rgb(121, 117, 117);
   top: 0;
   right: 0;
-  margin: 20px;
+  margin-top: 10px;
   background: none;
   font-size: 16px;
   font-weight: 700;
   border: 1px solid rgb(121, 117, 117);
   border-radius: 7px;
-  padding: 5px;
+  padding: 1px 5px 2px 5px;
 }
