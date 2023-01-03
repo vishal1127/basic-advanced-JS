@@ -1,5 +1,6 @@
 const cart_items = document.querySelector("#cart .cart-items");
 const parentContainer = document.getElementById("EcommerceContainer");
+window.addEventListener("DOMContentLoaded", getAllProducts);
 
 parentContainer.addEventListener("click", (e) => {
   if (e.target.className == "shop-item-button") {
@@ -80,3 +81,9 @@ parentContainer.addEventListener("click", (e) => {
     e.target.parentNode.parentNode.remove();
   }
 });
+
+function getAllProducts() {
+  axios.get("http://localhost:3000/getProducts").then((response) => {
+    console.log("response from get products---->", response);
+  });
+}
