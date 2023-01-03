@@ -1,6 +1,7 @@
 const cart_items = document.querySelector("#cart .cart-items");
 const parentContainer = document.getElementById("EcommerceContainer");
-window.addEventListener("DOMContentLoaded", getAllProducts);
+let productsSection = document.getElementById("music-content");
+window.addEventListener("DOMContentLoaded", listAllProducts);
 
 parentContainer.addEventListener("click", (e) => {
   if (e.target.className == "shop-item-button") {
@@ -82,8 +83,24 @@ parentContainer.addEventListener("click", (e) => {
   }
 });
 
-function getAllProducts() {
+function listAllProducts() {
   axios.get("http://localhost:3000/getProducts").then((response) => {
-    console.log("response from get products---->", response);
+    // console.log("response from get products---->", response);
+    let productsList = response.data;
+    for (product of productsList) {
+      let productItem = `<div id="album1">
+      <h3>${product.name}</h3>
+      <div class="image-container">
+        <img class="prod-images" src="${product.imgUrl}" alt="" />
+      </div>
+      <div class="prod-details">
+        <span>$<span>${product.price}</span></span>
+        <button class="shop-item-button" type="button">
+          ADD TO CART
+        </button>
+      </div>
+    </div>`;
+      productsSection.innerHTML = productsSection.innerHTML + productItem;
+    }
   });
 }
